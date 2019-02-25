@@ -72,18 +72,18 @@ int main(int argc, char * argv[]) {
 
           steer_value = pid.TotalError();
 
-          if(cte > 2 || cte < -2)
+          if(angle > 10 || angle < -10)
           {
             throttle = 0.1;
           }
           else
           {
             throttle = 0.3;
-          }          
+          }
           
           // DEBUG
-          std::cout << "CTE: " << cte << " Steering Value: " << steer_value 
-                    << std::endl;
+          std::cout << "CTE: " << cte << " angle: " << angle << " speed: " << speed
+                    << " Steering Value: " << rad2deg(steer_value) << std::endl;
 
           json msgJson;
           msgJson["steering_angle"] = steer_value;
